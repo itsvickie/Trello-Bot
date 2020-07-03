@@ -1,0 +1,10 @@
+LISTAR OS QUADROS: 
+https://api.trello.com/1/members/me/boards?key=${api_key}&token=${api_token}
+
+LISTAR AS LISTAS:
+boards/ID DO QUADRO/lists/key/token
+https://api.trello.com/1/boards/${id}/lists/?key=${api_key}&token=${api_token}
+
+LISTAR OS CARDS:
+list/ID DA LISTA/cards/key/token
+https://api.trello.com/1/list/${id}/cards/?key=${api_key}&token=${api_token}
