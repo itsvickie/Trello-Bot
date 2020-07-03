@@ -9,6 +9,17 @@ const { bot, relatorios } = require('./src/message/messagens');
 const { sprints } = require('./src/trello/trello');
 const { diario } = require('./src/relatorios/relatorios');
 
+const hostname = process.env.HOSTNAME;
+const port = process.env.PORT;
+
+const server = http.createServer((req, res) => {
+  respondToRequest(req, res);
+});
+
+server.listen(port, hostname, () => {
+  console.log(`Server running at http://${hostname}:${port}/`);
+});
+
 client.on("ready", () => {
     console.log(`O bot foi iniciado, com ${client.users.cache.size} usuários e em ${client.guilds.cache.size} servidores.`);
     client.user.setActivity('!bot', { type: 'LISTENING' }); (`Eu estou em ${client.guilds.cache.size} servidores`);
