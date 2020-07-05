@@ -140,7 +140,7 @@ module.exports = {
     const titulo = cleanMask(args[0]);
     const desc = cleanMask(args[1]);
 
-    fetch(`https://api.trello.com/1/cards?key=daa542e26db63633dc45e0b48912fdf0&token=f726f66d43922a43d9c9c2168a977e29b906db3b6aaee06ce9fd96b9f2b4b28e&idList=5f01429163c6fb5c8b558b6e&idMembers=5cd6e99e20e41b48aa4aa9c2&name=${encodeURI(titulo, 'UTF-8')}&desc=${encodeURI(desc, 'UTF-8')}`, {
+    fetch(`https://api.trello.com/1/cards?key=${api_key}&token=${api_token}&idList=5f01429163c6fb5c8b558b6e&idMembers=5cd6e99e20e41b48aa4aa9c2&name=${encodeURI(titulo, 'UTF-8')}&desc=${encodeURI(desc, 'UTF-8')}`, {
       method: 'POST',
       headers: {
         'Accept': 'application/json'
