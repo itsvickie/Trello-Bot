@@ -2,11 +2,9 @@ require('dotenv/config');
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const config = require('./config.json');
-const fetch = require('node-fetch');
-const { resolve } = require('path')
 
 const { bot, relatorios } = require('./src/message/messagens');
-const { sprints } = require('./src/trello/trello');
+const { sprints, geraldo, anderson, joao, vickie, ticket } = require('./src/trello/trello');
 const { diario } = require('./src/relatorios/relatorios');
 
 const http = require('http');
@@ -30,7 +28,7 @@ client.on("message", async message => {
     if (message.author.bot) return;
     if (message.channel.type === "dm") return;
 
-    const args = message.content.slice(config.prefix.length).trim().split(/ + /g);
+    const args = message.content.slice(config.prefix.length).split(/ [()]/g);
     const comando = args.shift().toLowerCase();
 
     switch(comando){
@@ -43,8 +41,23 @@ client.on("message", async message => {
         case "diarios":
             diario(message);
             break;
-        case 'sprints':
-            sprints(message);
+        case 'geraldo':
+            geraldo(message);
+            break;
+        case 'anderson':
+            anderson(message);
+            break;
+        case 'murimuri':
+            joao(message);
+            break;
+        case 'vickie':
+            vickie(message);
+            break;
+        case 'gabriel':
+            gabriel(message);
+            break;
+        case 'ticket':
+            ticket(args, message);
             break;
     }
 });
