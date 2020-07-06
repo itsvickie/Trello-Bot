@@ -4,16 +4,16 @@ const client = new Discord.Client();
 const config = require('./config.json');
 
 const { bot, relatorios } = require('./src/message/messagens');
-const { sprints, geraldo, anderson, joao, vickie, ticket, cardsAndamento } = require('./src/trello/trello');
+const { ticket, cardsAndamento, reuniao } = require('./src/trello/trello');
 const { diario } = require('./src/relatorios/relatorios');
 
-const http = require('http');
+// const http = require('http');
 
-const server = http.createServer((req, res) => {
-    respondToRequest(req, res);
-});
+// const server = http.createServer((req, res) => {
+//     respondToRequest(req, res);
+// });
 
-server.listen(process.env.PORT || 3000)
+// server.listen(process.env.PORT || 8080)
 
 client.on("ready", () => {
     console.log(`O bot foi iniciado, com ${client.users.cache.size} usuários e em ${client.guilds.cache.size} servidores.`);
@@ -58,6 +58,9 @@ client.on("message", async message => {
             break;
         case 'ticket':
             ticket(args, message);
+            break;
+        case 'reuniao':
+            reuniao(args, message);
             break;
         case 'teste':
             break;

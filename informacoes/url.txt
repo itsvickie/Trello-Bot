@@ -8,3 +8,6 @@ https://api.trello.com/1/boards/${id}/lists/?key=${api_key}&token=${api_token}
 LISTAR OS CARDS:
 list/ID DA LISTA/cards/key/token
 https://api.trello.com/1/list/${id}/cards/?key=${api_key}&token=${api_token}
+
+ID DO BOARD=5e3f5a39c0c347042d6a6da9
+ID DA LISTA REUNIÃO=5e3f5abdbc408c1ea9a50fee
