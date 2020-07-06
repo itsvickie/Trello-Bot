@@ -7,13 +7,13 @@ const { bot, relatorios } = require('./src/message/messagens');
 const { ticket, cardsAndamento, reuniao } = require('./src/trello/trello');
 const { diario } = require('./src/relatorios/relatorios');
 
-// const http = require('http');
+const http = require('http');
 
-// const server = http.createServer((req, res) => {
-//     respondToRequest(req, res);
-// });
+const server = http.createServer((req, res) => {
+    respondToRequest(req, res);
+});
 
-// server.listen(process.env.PORT || 8080)
+server.listen(process.env.PORT || 8080)
 
 client.on("ready", () => {
     console.log(`O bot foi iniciado, com ${client.users.cache.size} usuários e em ${client.guilds.cache.size} servidores.`);
