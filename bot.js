@@ -4,13 +4,13 @@ const client = new Discord.Client();
 const config = require('./config.json');
 
 const { bot, relatorios } = require('./src/message/messagens');
-const { sprints, geraldo, anderson, joao, vickie, ticket } = require('./src/trello/trello');
+const { sprints, geraldo, anderson, joao, vickie, ticket, cardsAndamento } = require('./src/trello/trello');
 const { diario } = require('./src/relatorios/relatorios');
 
 const http = require('http');
 
 const server = http.createServer((req, res) => {
-  respondToRequest(req, res);
+    respondToRequest(req, res);
 });
 
 server.listen(process.env.PORT || 3000)
@@ -31,7 +31,7 @@ client.on("message", async message => {
     const args = message.content.slice(config.prefix.length).split(/ [()]/g);
     const comando = args.shift().toLowerCase();
 
-    switch(comando){
+    switch (comando) {
         case "bot":
             bot(message);
             break;
@@ -42,23 +42,26 @@ client.on("message", async message => {
             diario(message);
             break;
         case 'geraldo':
-            geraldo(message);
+            cardsAndamento(message, 'Geraldo', process.env.GERALDO);
             break;
         case 'anderson':
-            anderson(message);
+            cardsAndamento(message, 'Anderson', process.env.ANDERSON);
             break;
         case 'murimuri':
-            joao(message);
+            cardsAndamento(message, 'João', process.env.JOAO);
             break;
         case 'vickie':
-            vickie(message);
+            cardsAndamento(message, 'Vickie', process.env.VICKIE);
             break;
         case 'gabriel':
-            gabriel(message);
+            cardsAndamento(message, 'Gabriel', process.env.GABRIEL);
             break;
         case 'ticket':
             ticket(args, message);
             break;
+        case 'teste':
+            break;
+            // var embed = new Discord.MessageEmbed().setTitle("oi").setColor(0x007AC0).setDescription();
     }
 });
 
